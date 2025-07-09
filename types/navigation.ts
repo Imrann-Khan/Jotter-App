@@ -19,6 +19,12 @@ export type RootStackParamList = {
   PdfViewer: { pdfId: string; pdfName: string };
   ImageViewer: { imageId: string; imageName: string };
   NoteEditor: { noteId?: string; noteName?: string };
+  PinLock: { title?: string; pinLength?: number };
+  HiddenItems: undefined;
+  Profile: undefined;
+  EditProfile: undefined;
+  Settings: undefined;
+  ChangePassword: undefined;
 };
 
 export type AppState =
@@ -29,4 +35,6 @@ export type AppState =
   | "folderContents"
   | "pdfViewer"
   | "imageViewer"
-  | "noteEditor";
+  | "noteEditor"
+  | "pinLock"
+  | "hiddenItems";

@@ -9,6 +9,16 @@ export { FolderContentsScreen } from "./FolderContentsScreen";
 export { PdfViewerScreen } from "./PdfViewerScreen";
 export { ImageViewerScreen } from "./ImageViewerScreen";
 export { NoteEditorScreen } from "./NoteEditorScreen";
+export { PinLockScreen } from "./PinLockScreen";
+export { HiddenItemsScreen } from "./HiddenItemsScreen";
+//export { FavoritesScreen } from "./FavoritesScreen";
+export { FavoritesScreen } from "../components/dashboard/FavoritesScreen";
+
+// Profile screens
+export { ProfileScreen } from "./ProfileScreen";
+export { EditProfileScreen } from "./EditProfileScreen";
+export { SettingsScreen } from "./SettingsScreen";
+export { ChangePasswordScreen } from "./ChangePasswordScreen";
 
 // Auth screens
 export * from "./auth";

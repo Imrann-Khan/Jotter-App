@@ -1,9 +1,13 @@
 export { TextInput } from "./TextInput";
 export { Button } from "./Button";
 export { DeleteConfirmationModal } from "./DeleteConfirmationModal";
+export { LogOutModal } from "./LogOutModal";
+export { DeleteAccountModal } from "./DeleteAccountModal";
 export { GoogleIcon } from "./GoogleIcon";
 export { BackButton } from "./BackButton";
 export { SearchBar } from "./SearchBar";
 export { ItemListRow } from "./ItemListRow";
 export { FloatingActionButton } from "./FloatingActionButton";
+export { PinIndicator } from "./PinIndicator";
+export { PinKeypad } from "./PinKeypad";
 export * from "./FileIcons";

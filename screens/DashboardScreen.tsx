@@ -25,6 +25,8 @@ interface DashboardScreenProps {
   onNavigateToNotes?: () => void;
   onNavigateToImages?: () => void;
   onNavigateToPdf?: () => void;
+  onNavigateToHiddenItems?: () => void;
+  onTabPress?: (tab: string) => void;
 }
 
 export const DashboardScreen: React.FC<DashboardScreenProps> = ({
@@ -32,6 +34,8 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
   onNavigateToNotes,
   onNavigateToImages,
   onNavigateToPdf,
+  onNavigateToHiddenItems,
+  onTabPress = () => {},
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
@@ -92,7 +96,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
         </View>
 
         {/* Lock Icon */}
-        <LockIcon />
+        <LockIcon onPress={onNavigateToHiddenItems} />
       </View>
 
       {/* Search Bar */}
@@ -146,7 +150,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
       <FloatingActionButton />
 
       {/* Bottom Navigation */}
-      <BottomNavigation activeTab="home" />
+      <BottomNavigation activeTab="home" onTabPress={onTabPress} />
 
       {/* Context Menu */}
       {isContextMenuVisible && (

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { SplashScreen } from "./screens/SplashScreen";
 import { LandingScreen } from "./screens/LandingScreen";
 import { AuthNavigator } from "./screens/auth/AuthNavigator";
 import { DashboardScreen } from "./screens/DashboardScreen";
+import { FavoritesScreen } from "./components/dashboard/FavoritesScreen";
 import { FoldersScreen } from "./screens/FoldersScreen";
 import { AllNotesScreen } from "./screens/AllNotesScreen";
 import { ImagesScreen } from "./screens/ImagesScreen";
@@ -12,12 +13,25 @@ import { FolderContentsScreen } from "./screens/FolderContentsScreen";
 import { PdfViewerScreen } from "./screens/PdfViewerScreen";
 import { ImageViewerScreen } from "./screens/ImageViewerScreen";
 import { NoteEditorScreen } from "./screens/NoteEditorScreen";
+import { PinLockScreen } from "./screens/PinLockScreen";
+import { HiddenItemsScreen } from "./screens/HiddenItemsScreen";
+import { ProfileScreen } from "./screens/ProfileScreen";
+import { EditProfileScreen } from "./screens/EditProfileScreen";
+import { SettingsScreen } from "./screens/SettingsScreen";
+import { ChangePasswordScreen } from "./screens/ChangePasswordScreen";
+import { TermsAndConditionsScreen } from "./screens/TermsAndConditionsScreen";
+import { PrivacyPolicyScreen } from "./screens/PrivacyPolicyScreen";
+import { AboutUsScreen } from "./screens/AboutUsScreen";
+import { SupportScreen } from "./screens/SupportScreen";
+import { CalendarScreen } from "./screens/CalendarScreen";
 
 type AppState =
   | "splash"
   | "landing"
   | "auth"
   | "main"
+  | "favorites"
+  | "calendar"
   | "folders"
   | "notes"
   | "images"
@@ -25,7 +39,17 @@ type AppState =
   | "folderContents"
   | "pdfViewer"
   | "imageViewer"
-  | "noteEditor";
+  | "noteEditor"
+  | "pinLock"
+  | "hiddenItems"
+  | "profile"
+  | "editProfile"
+  | "settings"
+  | "changePassword"
+  | "termsConditions"
+  | "privacyPolicy"
+  | "aboutUs"
+  | "support";
 
 interface NavigationParams {
   folderId?: string;
@@ -36,6 +60,8 @@ interface NavigationParams {
   imageName?: string;
   noteId?: string;
   noteName?: string;
+  pinTitle?: string;
+  pinLength?: number;
 }
 
 export const JotterMobileApp: React.FC = () => {
@@ -54,6 +80,10 @@ export const JotterMobileApp: React.FC = () => {
 
   const handleAuthComplete = () => {
     setCurrentState("main");
+  };
+
+  const handleNavigateToFavorites = () => {
+    setCurrentState("favorites");
   };
 
   const handleNavigateToFolders = () => {
@@ -107,31 +137,81 @@ export const JotterMobileApp: React.FC = () => {
     setCurrentState("folderContents");
   };
 
+  const handleNavigateToPinLock = (title?: string, pinLength?: number) => {
+    setNavigationParams({ pinTitle: title, pinLength });
+    setCurrentState("pinLock");
+  };
+
+  const handleNavigateToHiddenItems = () => {
+    setCurrentState("hiddenItems");
+  };
+
+  const handlePinEntered = (pin: string) => {
+    console.log("PIN entered:", pin);
+    // Navigate to hidden items after successful PIN entry
+    setCurrentState("hiddenItems");
+  };
+
+  const handleTabPress = (tab: string) => {
+    switch (tab) {
+      case "home":
+        setCurrentState("main");
+        break;
+      case "bookmark":
+        setCurrentState("favorites");
+        break;
+      case "calendar":
+        setCurrentState("calendar");
+        break;
+      case "profile":
+        setCurrentState("profile");
+        break;
+    }
+  };
+
+  const handleNavigateProfile = (screen: string) => {
+    switch (screen) {
+      case "Profile":
+        setCurrentState("profile");
+        break;
+      case "EditProfile":
+        setCurrentState("editProfile");
+        break;
+      case "Settings":
+        setCurrentState("settings");
+        break;
+      case "ChangePassword":
+        setCurrentState("changePassword");
+        break;
+      case "TermsConditions":
+        setCurrentState("termsConditions");
+        break;
+      case "PrivacyPolicy":
+        setCurrentState("privacyPolicy");
+        break;
+      case "AboutUs":
+        setCurrentState("aboutUs");
+        break;
+      case "Support":
+        setCurrentState("support");
+        break;
+    }
+  };
+
+  const handleLogout = () => {
+    setCurrentState("auth");
+  };
+
+  const handleDeleteAccount = () => {
+    setCurrentState("auth");
+  };
+
   const renderCurrentState = () => {
     switch (currentState) {
       case "splash":
         return <SplashScreen onComplete={handleSplashComplete} />;
       case "landing":
-        return (
-          <View style={{ flex: 1 }}>
-            <LandingScreen onNavigateToAuth={handleNavigateToAuth} />
-            <TouchableOpacity
-              onPress={() => setCurrentState("main")}
-              style={{
-                position: "absolute",
-                bottom: 100,
-                right: 20,
-                backgroundColor: "#007AFF",
-                padding: 10,
-                borderRadius: 8,
-              }}
-            >
-              <Text style={{ color: "white", fontSize: 12 }}>
-                Test Dashboard
-              </Text>
-            </TouchableOpacity>
-          </View>
-        );
+        return <LandingScreen onNavigateToAuth={handleNavigateToAuth} />;
       case "auth":
         return <AuthNavigator onAuthComplete={handleAuthComplete} />;
       case "main":
@@ -141,6 +221,21 @@ export const JotterMobileApp: React.FC = () => {
             onNavigateToNotes={handleNavigateToNotes}
             onNavigateToImages={handleNavigateToImages}
             onNavigateToPdf={handleNavigateToPdf}
+            onTabPress={handleTabPress}
+          />
+        );
+      case "favorites":
+        return (
+          <FavoritesScreen
+            onNavigateBack={handleBackToDashboard}
+            onTabPress={handleTabPress}
+          />
+        );
+      case "calendar":
+        return (
+          <CalendarScreen
+            onNavigateBack={handleBackToDashboard}
+            onTabPress={handleTabPress}
           />
         );
       case "folders":
@@ -210,6 +305,43 @@ export const JotterMobileApp: React.FC = () => {
             }}
           />
         );
+      case "profile":
+        return (
+          <ProfileScreen
+            onNavigate={handleNavigateProfile}
+            onLogout={handleLogout}
+            onTabPress={handleTabPress}
+          />
+        );
+      case "editProfile":
+        return <EditProfileScreen onNavigate={handleNavigateProfile} />;
+      case "settings":
+        return (
+          <SettingsScreen
+            onNavigate={handleNavigateProfile}
+            onDeleteAccount={handleDeleteAccount}
+          />
+        );
+      case "changePassword":
+        return <ChangePasswordScreen onNavigate={handleNavigateProfile} />;
+      case "termsConditions":
+        return (
+          <TermsAndConditionsScreen
+            onBackPress={() => setCurrentState("settings")}
+          />
+        );
+      case "privacyPolicy":
+        return (
+          <PrivacyPolicyScreen
+            onBackPress={() => setCurrentState("settings")}
+          />
+        );
+      case "aboutUs":
+        return (
+          <AboutUsScreen onBackPress={() => setCurrentState("settings")} />
+        );
+      case "support":
+        return <SupportScreen onBackPress={() => setCurrentState("profile")} />;
       default:
         return <SplashScreen onComplete={handleSplashComplete} />;
     }

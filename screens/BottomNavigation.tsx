@@ -1,6 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { HomeIcon, BookmarkIcon, CalendarIcon, ProfileIcon } from "./Icons";
+import {
+  HomeIcon,
+  BookmarkIcon,
+  CalendarIcon,
+  ProfileIcon,
+} from "../components/dashboard/Icons";
 
 interface TabItemProps {
   icon: React.ReactNode;
@@ -35,7 +40,7 @@ const TabItem: React.FC<TabItemProps> = ({
         }}
       >
         {icon}
-        {isActive && label === "Home" && (
+        {isActive && (
           <Text
             style={{
               position: "absolute",
@@ -81,7 +86,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
 }) => {
   const tabs = [
     { id: "home", icon: <HomeIcon />, label: "Home" },
-    { id: "bookmark", icon: <BookmarkIcon />, label: "Bookmark" },
+    { id: "bookmark", icon: <BookmarkIcon />, label: "Favourite" },
     { id: "calendar", icon: <CalendarIcon />, label: "Calendar" },
     { id: "profile", icon: <ProfileIcon />, label: "Profile" },
   ];

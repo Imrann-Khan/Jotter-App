@@ -46,6 +46,7 @@ interface ContextMenuProps {
   position: { x: number; y: number };
   onClose: () => void;
   fileName?: string | null;
+  isFavoritesScreen?: boolean;
 }
 
 export const ContextMenu: React.FC<ContextMenuProps> = ({
@@ -53,9 +54,10 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   position,
   onClose,
   fileName,
+  isFavoritesScreen = false,
 }) => {
   const menuItems = [
-    "Favorite",
+    isFavoritesScreen ? "Un-favorite" : "Favorite",
     "Copy",
     "Rename",
     "Duplicate",
