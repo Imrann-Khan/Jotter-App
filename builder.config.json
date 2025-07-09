@@ -1,0 +1,6 @@
+{
+  "command": "npx \"@builder.io/dev-tools@latest\" add 959ff967",
+  "serverUrl": "http://localhost:8081/",
+  "authenticateProxy": false,
+  "commitMode": "commits"
+}
