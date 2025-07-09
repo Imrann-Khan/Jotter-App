@@ -4,11 +4,9 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   ScrollView,
 } from "react-native";
 import Svg, { Path, G, ClipPath, Rect, Defs } from "react-native-svg";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
 
 const BackIcon: React.FC = () => (
   <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -46,9 +44,6 @@ export const TermsAndConditionsScreen: React.FC<
 > = ({ onBackPress }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <CustomStatusBar />
-
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View

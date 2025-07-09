@@ -4,11 +4,9 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   ScrollView,
 } from "react-native";
 import Svg, { Path, G, ClipPath, Rect, Defs } from "react-native-svg";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
 import { DeleteAccountModal } from "../components/ui/DeleteAccountModal";
 
 const BackIcon: React.FC = () => (
@@ -165,9 +163,6 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <CustomStatusBar />
-
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View

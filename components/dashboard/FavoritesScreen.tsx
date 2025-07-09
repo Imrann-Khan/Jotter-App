@@ -3,11 +3,10 @@ import {
   View,
   Text,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import { StatusBar as CustomStatusBar, ContextMenu } from "../dashboard/";
+import { ContextMenu } from "../dashboard/";
 import { SearchBar } from "../ui/SearchBar";
 import { BottomNavigation } from "../ui/BottomNavigation";
 import Svg, { Path, G, ClipPath, Rect, Defs } from "react-native-svg";
@@ -319,15 +318,6 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#FFFFFF"
-        translucent={false}
-      />
-
-      {/* Custom Status Bar */}
-      <CustomStatusBar />
-
       {/* Header */}
       <View
         style={{

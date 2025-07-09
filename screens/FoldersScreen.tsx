@@ -4,7 +4,6 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
 } from "react-native";
 import { SearchBar } from "../components/ui";
@@ -94,12 +93,6 @@ export const FoldersScreen: React.FC<FoldersScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#FFFFFF"
-        translucent={false}
-      />
-
       {/* Status Bar */}
       <View
         style={{

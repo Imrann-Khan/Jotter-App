@@ -4,11 +4,9 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   ScrollView,
 } from "react-native";
 import Svg, { Path, G, ClipPath, Rect, Defs, Circle } from "react-native-svg";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
 import { BottomNavigation } from "../components/ui/BottomNavigation";
 import { LogOutModal } from "../components/ui/LogOutModal";
 
@@ -194,9 +192,6 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <CustomStatusBar />
-
       <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {/* Profile Avatar */}
         <View style={{ alignItems: "center", marginTop: 50, marginBottom: 30 }}>

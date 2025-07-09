@@ -4,14 +4,12 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   ScrollView,
   TextInput,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import Svg, { Path, G, ClipPath, Rect, Defs } from "react-native-svg";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
 
 const ProfileIcon: React.FC = () => (
   <Svg width="120" height="120" viewBox="0 0 120 120" fill="none">
@@ -72,9 +70,6 @@ export const EditProfileScreen: React.FC<EditProfileScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <CustomStatusBar />
-
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}

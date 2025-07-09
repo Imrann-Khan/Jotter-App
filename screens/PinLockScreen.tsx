@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  StatusBar,
-} from "react-native";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { PinIndicator } from "../components/ui/PinIndicator";
 import { PinKeypad } from "../components/ui/PinKeypad";
 
@@ -55,64 +48,42 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
         borderRadius: 32,
       }}
     >
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-
       <SafeAreaView style={{ flex: 1 }}>
-        <CustomStatusBar />
-
         <View
           style={{
             flex: 1,
-            position: "relative",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingHorizontal: 24,
           }}
         >
           {/* Title Section */}
           <View
             style={{
-              display: "flex",
-              width: 345,
-              height: 64,
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 53,
-              flexShrink: 0,
               position: "absolute",
-              left: 24,
-              top: 50,
+              top: 94,
+              alignItems: "center",
             }}
           >
-            <View
+            <Text
               style={{
-                display: "flex",
-                width: 192,
-                height: 45,
-                flexDirection: "column",
-                justifyContent: "center",
-                flexShrink: 0,
+                fontSize: 24,
+                fontWeight: "500",
+                color: "#303030",
+                fontFamily: "Inter",
+                textAlign: "center",
               }}
             >
-              <Text
-                style={{
-                  fontSize: 24,
-                  fontWeight: "500",
-                  color: "#303030",
-                  fontFamily: "Inter",
-                  textAlign: "center",
-                }}
-              >
-                {title}
-              </Text>
-            </View>
+              {title}
+            </Text>
           </View>
 
           {/* PIN Indicators */}
           <View
             style={{
               position: "absolute",
-              left: 133,
-              top: 160,
-              width: 128,
-              height: 14,
+              top: 204,
+              alignItems: "center",
             }}
           >
             <PinIndicator pinLength={pinLength} currentLength={pin.length} />
@@ -122,10 +93,8 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
           <View
             style={{
               position: "absolute",
-              left: 59,
-              top: 237,
-              width: 288,
-              height: 392,
+              top: 281,
+              alignItems: "center",
             }}
           >
             <PinKeypad
@@ -139,10 +108,8 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
             onPress={handleForgotPin}
             style={{
               position: "absolute",
-              left: 125,
-              top: 682,
-              width: 145,
-              height: 24,
+              bottom: 170,
+              alignItems: "center",
             }}
           >
             <Text

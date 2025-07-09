@@ -4,14 +4,12 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
   Alert,
   RefreshControl,
   ActivityIndicator,
 } from "react-native";
 import { BottomNavigation } from "./BottomNavigation";
-import { StatusBar as CustomStatusBar } from "../components/dashboard";
 import { CalendarHeader } from "../components/calendar/CalendarHeader";
 import { CalendarGrid } from "../components/calendar/CalendarGrid";
 import { FileListItem } from "../components/calendar/FileListItem";
@@ -103,15 +101,6 @@ export const CalendarScreen: React.FC<CalendarScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#FFFFFF"
-        translucent={false}
-      />
-
-      {/* Custom Status Bar */}
-      <CustomStatusBar />
-
       {/* Header */}
       <View
         style={{

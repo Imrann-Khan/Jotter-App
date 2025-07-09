@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -101,7 +100,6 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}

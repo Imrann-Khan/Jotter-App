@@ -4,7 +4,6 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
 } from "react-native";
 import { SearchBar } from "../components/ui";
@@ -79,7 +78,7 @@ export const AllPdfScreen: React.FC<AllPdfScreenProps> = ({ onBackPress }) => {
     { id: 7, name: "pdf.1", date: "Jan 11, 2025" },
   ];
 
-   const handleBackPress = () => {
+  const handleBackPress = () => {
     if (onBackPress) {
       onBackPress();
     }
@@ -92,12 +91,6 @@ export const AllPdfScreen: React.FC<AllPdfScreenProps> = ({ onBackPress }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#FFFFFF"
-        translucent={false}
-      />
-
       {/* Status Bar */}
       <View
         style={{

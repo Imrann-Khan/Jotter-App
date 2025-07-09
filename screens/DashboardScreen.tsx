@@ -3,7 +3,6 @@ import {
   View,
   Text,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
@@ -16,7 +15,6 @@ import {
   BottomNavigation,
   LockIcon,
   MenuIcon,
-  StatusBar as CustomStatusBar,
 } from "../components/dashboard";
 import { SearchBar } from "../components/ui";
 
@@ -61,15 +59,6 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#FFFFFF"
-        translucent={false}
-      />
-
-      {/* Custom Status Bar */}
-      <CustomStatusBar />
-
       {/* Header */}
       <View
         style={{

@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  StatusBar,
-  Alert,
-} from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Alert } from "react-native";
 import { Svg, Path, G, Defs, ClipPath, Rect } from "react-native-svg";
 import { DeleteConfirmationModal } from "../components/ui/DeleteConfirmationModal";
 
@@ -147,8 +140,6 @@ export const FolderContentsScreen: React.FC<FolderContentsScreenProps> = ({
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-
       {/* Status Bar */}
       <View
         style={{

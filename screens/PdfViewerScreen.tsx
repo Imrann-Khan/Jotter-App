@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  StatusBar,
   Image,
   Alert,
 } from "react-native";
@@ -134,8 +133,6 @@ export const PdfViewerScreen: React.FC<PdfViewerScreenProps> = ({
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-
       {/* Status Bar */}
       <View
         style={{

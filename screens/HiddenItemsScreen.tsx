@@ -4,17 +4,13 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   TouchableOpacity,
 } from "react-native";
 import { SearchBar } from "../components/ui";
 import { ItemListRow } from "../components/ui/ItemListRow";
 import { FloatingActionButton } from "../components/ui/FloatingActionButton";
 import { BackIcon, SearchIcon } from "../components/ui/FileIcons";
-import {
-  LockIcon,
-  StatusBar as CustomStatusBar,
-} from "../components/dashboard";
+import { LockIcon } from "../components/dashboard";
 
 interface HiddenItem {
   id: string;
@@ -169,11 +165,7 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
         backgroundColor: "#FFFFFF",
       }}
     >
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-
       <SafeAreaView style={{ flex: 1 }}>
-        <CustomStatusBar />
-
         {/* Header */}
         <View
           style={{

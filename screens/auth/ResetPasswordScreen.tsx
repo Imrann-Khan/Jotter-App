@@ -3,7 +3,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  StatusBar,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -34,8 +33,6 @@ export const ResetPasswordScreen: React.FC<ResetPasswordScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
-
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}

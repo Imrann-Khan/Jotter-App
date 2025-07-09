@@ -4,13 +4,15 @@ import { SignUpScreen } from "./SignUpScreen";
 import { ForgotPasswordScreen } from "./ForgotPasswordScreen";
 import { VerificationCodeScreen } from "./VerificationCodeScreen";
 import { ResetPasswordScreen } from "./ResetPasswordScreen";
+import { PinEntryScreen } from "./PinEntryScreen";
 
 type AuthScreen =
   | "login"
   | "signup"
   | "forgot-password"
   | "verification"
-  | "reset-password";
+  | "reset-password"
+  | "pin-entry";
 
 interface AuthNavigatorProps {
   onAuthComplete: () => void;
@@ -49,6 +51,18 @@ export const AuthNavigator: React.FC<AuthNavigatorProps> = ({
     console.log("Resetting password");
     // After successful reset, you might want to navigate back to login
     navigateToScreen("login");
+  };
+
+  const handlePinComplete = (pin: string) => {
+    // Here you would typically verify the PIN with your backend
+    console.log("PIN entered:", pin);
+    onAuthComplete();
+  };
+
+  const handleForgotPin = () => {
+    // Handle forgot PIN logic - could navigate to forgot password or show other options
+    console.log("Forgot PIN pressed");
+    navigateToScreen("forgot-password");
   };
 
   const handleLogin = () => {
@@ -99,6 +113,13 @@ export const AuthNavigator: React.FC<AuthNavigatorProps> = ({
         );
       case "reset-password":
         return <ResetPasswordScreen onResetPassword={handleResetPassword} />;
+      case "pin-entry":
+        return (
+          <PinEntryScreen
+            onPinComplete={handlePinComplete}
+            onForgotPin={handleForgotPin}
+          />
+        );
       default:
         return (
           <LoginScreen

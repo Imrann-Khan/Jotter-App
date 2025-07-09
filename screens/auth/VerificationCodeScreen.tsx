@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -84,8 +83,6 @@ export const VerificationCodeScreen: React.FC<VerificationCodeScreenProps> = ({
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
-
       {/* App Bar */}
       <View
         style={{

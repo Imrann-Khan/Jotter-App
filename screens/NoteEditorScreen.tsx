@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  StatusBar,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -64,8 +63,6 @@ export const NoteEditorScreen: React.FC<NoteEditorScreenProps> = ({
       style={{ flex: 1, backgroundColor: "#FFF" }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-
       {/* Status Bar */}
       <View
         style={{

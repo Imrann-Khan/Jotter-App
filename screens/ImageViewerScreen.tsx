@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  Image,
-  Alert,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
 import { Svg, Path, G, Defs, ClipPath, Rect } from "react-native-svg";
 import { DeleteConfirmationModal } from "../components/ui/DeleteConfirmationModal";
 
@@ -133,8 +126,6 @@ export const ImageViewerScreen: React.FC<ImageViewerScreenProps> = ({
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-
       {/* Status Bar */}
       <View
         style={{

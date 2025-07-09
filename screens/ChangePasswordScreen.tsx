@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
   ScrollView,
   TextInput,
   KeyboardAvoidingView,
@@ -164,8 +163,6 @@ export const ChangePasswordScreen: React.FC<ChangePasswordScreenProps> = ({
   return (
     <View style={{ flex: 1, backgroundColor: "#FFFFFF", borderRadius: 30 }}>
       <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
