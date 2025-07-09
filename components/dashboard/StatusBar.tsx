@@ -52,12 +52,6 @@ const MobileSignalIcon: React.FC = () => (
 );
 
 export const StatusBar: React.FC = () => {
-  const currentTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: false,
-  });
-
   return (
     <View
       style={{
@@ -74,11 +68,11 @@ export const StatusBar: React.FC = () => {
         style={{
           fontSize: 14,
           color: "#181818",
-          fontFamily: "System",
+          fontFamily: "Prompt",
           fontWeight: "400",
         }}
       >
-        {currentTime}
+        5:13
       </Text>
 
       <View

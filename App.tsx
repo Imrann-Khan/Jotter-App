@@ -221,6 +221,9 @@ export const JotterMobileApp: React.FC = () => {
             onNavigateToNotes={handleNavigateToNotes}
             onNavigateToImages={handleNavigateToImages}
             onNavigateToPdf={handleNavigateToPdf}
+            onNavigateToHiddenItems={() =>
+              handleNavigateToPinLock("Enter PIN to access hidden items", 4)
+            }
             onTabPress={handleTabPress}
           />
         );
@@ -302,6 +305,32 @@ export const JotterMobileApp: React.FC = () => {
             onBackPress={handleBackToFolderContents}
             onSave={(title, content) => {
               console.log("Note saved:", title, content);
+            }}
+          />
+        );
+      case "pinLock":
+        return (
+          <PinLockScreen
+            title={navigationParams.pinTitle}
+            pinLength={navigationParams.pinLength}
+            onPinEntered={handlePinEntered}
+            onForgotPin={() => {
+              // Navigate back to main screen or show forgot PIN flow
+              setCurrentState("main");
+            }}
+          />
+        );
+      case "hiddenItems":
+        return (
+          <HiddenItemsScreen
+            onBackPress={() => setCurrentState("main")}
+            onItemPress={(item) => {
+              console.log("Hidden item pressed:", item);
+              // Handle item press - could navigate to appropriate viewer
+            }}
+            onUnhideItem={(itemId) => {
+              console.log("Unhide item:", itemId);
+              // Handle unhide action
             }}
           />
         );

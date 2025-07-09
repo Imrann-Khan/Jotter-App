@@ -226,7 +226,12 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
         <ScrollView
           style={{ flex: 1 }}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 100 }}
+          contentContainerStyle={{
+            paddingBottom: 100,
+            flexGrow: 1,
+            justifyContent:
+              filteredItems.length === 0 ? "center" : "flex-start",
+          }}
         >
           {filteredItems.length === 0 ? (
             <View
@@ -234,7 +239,7 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                paddingTop: 100,
+                paddingHorizontal: 40,
               }}
             >
               <LockIcon />
@@ -257,7 +262,6 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
                   fontFamily: "Inter",
                   textAlign: "center",
                   marginTop: 8,
-                  paddingHorizontal: 40,
                   lineHeight: 20,
                 }}
               >
@@ -267,13 +271,20 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
               </Text>
             </View>
           ) : (
-            <View style={{ paddingHorizontal: 24 }}>
+            <View
+              style={{
+                paddingHorizontal: 24,
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
                   alignItems: "center",
                   marginBottom: 16,
+                  width: "100%",
                 }}
               >
                 <Text
@@ -288,22 +299,25 @@ export const HiddenItemsScreen: React.FC<HiddenItemsScreenProps> = ({
                 </Text>
               </View>
 
-              {filteredItems.map((item) => (
-                <ItemListRow
-                  key={item.id}
-                  title={item.name}
-                  subtitle={
-                    item.size ? `${item.size} • ${item.date}` : item.date
-                  }
-                  type={item.type}
-                  onPress={() => handleItemPress(item)}
-                  onMenuPress={(position) => {
-                    // Show context menu with unhide option
-                    handleItemMenuPress(item.id, "unhide");
-                  }}
-                  showMenuDots={true}
-                />
-              ))}
+              <View style={{ width: "100%", alignItems: "center" }}>
+                {filteredItems.map((item) => (
+                  <View key={item.id} style={{ width: "100%" }}>
+                    <ItemListRow
+                      title={item.name}
+                      subtitle={
+                        item.size ? `${item.size} • ${item.date}` : item.date
+                      }
+                      type={item.type}
+                      onPress={() => handleItemPress(item)}
+                      onMenuPress={(position) => {
+                        // Show context menu with unhide option
+                        handleItemMenuPress(item.id, "unhide");
+                      }}
+                      showMenuDots={true}
+                    />
+                  </View>
+                ))}
+              </View>
             </View>
           )}
         </ScrollView>

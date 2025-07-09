@@ -13,10 +13,11 @@ export const PinIndicator: React.FC<PinIndicatorProps> = ({
   return (
     <View
       style={{
-        flexDirection: "row",
+        display: "inline-flex",
         justifyContent: "center",
         alignItems: "center",
         gap: 24,
+        flexDirection: "row",
       }}
     >
       {Array.from({ length: pinLength }, (_, index) => (
@@ -26,7 +27,7 @@ export const PinIndicator: React.FC<PinIndicatorProps> = ({
             width: 14,
             height: 14,
             borderRadius: 8,
-            backgroundColor: index < currentLength ? "#303030" : "#747474",
+            backgroundColor: "#747474",
           }}
         />
       ))}

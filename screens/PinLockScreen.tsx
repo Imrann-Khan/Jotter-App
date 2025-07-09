@@ -52,6 +52,7 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
       style={{
         flex: 1,
         backgroundColor: "#FFFFFF",
+        borderRadius: 32,
       }}
     >
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
@@ -62,36 +63,56 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
         <View
           style={{
             flex: 1,
-            paddingHorizontal: 24,
-            justifyContent: "space-between",
-            paddingBottom: 50,
+            position: "relative",
           }}
         >
           {/* Title Section */}
           <View
             style={{
+              display: "flex",
+              width: 345,
+              height: 64,
+              justifyContent: "center",
               alignItems: "center",
-              marginTop: 50,
+              gap: 53,
+              flexShrink: 0,
+              position: "absolute",
+              left: 24,
+              top: 50,
             }}
           >
-            <Text
+            <View
               style={{
-                fontSize: 24,
-                fontWeight: "500",
-                color: "#303030",
-                fontFamily: "Inter",
-                textAlign: "center",
+                display: "flex",
+                width: 192,
+                height: 45,
+                flexDirection: "column",
+                justifyContent: "center",
+                flexShrink: 0,
               }}
             >
-              {title}
-            </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: "500",
+                  color: "#303030",
+                  fontFamily: "Inter",
+                  textAlign: "center",
+                }}
+              >
+                {title}
+              </Text>
+            </View>
           </View>
 
           {/* PIN Indicators */}
           <View
             style={{
-              alignItems: "center",
-              marginTop: -100,
+              position: "absolute",
+              left: 133,
+              top: 160,
+              width: 128,
+              height: 14,
             }}
           >
             <PinIndicator pinLength={pinLength} currentLength={pin.length} />
@@ -100,38 +121,44 @@ export const PinLockScreen: React.FC<PinLockScreenProps> = ({
           {/* PIN Keypad */}
           <View
             style={{
-              alignItems: "center",
-              marginBottom: 100,
+              position: "absolute",
+              left: 59,
+              top: 237,
+              width: 288,
+              height: 392,
             }}
           >
             <PinKeypad
               onNumberPress={handleNumberPress}
               onDeletePress={handleDeletePress}
             />
+          </View>
 
-            {/* Forgot PIN Link */}
-            <TouchableOpacity
-              onPress={handleForgotPin}
+          {/* Forgot PIN Link */}
+          <TouchableOpacity
+            onPress={handleForgotPin}
+            style={{
+              position: "absolute",
+              left: 125,
+              top: 682,
+              width: 145,
+              height: 24,
+            }}
+          >
+            <Text
               style={{
-                marginTop: 50,
-                paddingVertical: 10,
+                fontSize: 14,
+                fontWeight: "500",
+                color: "#303030",
+                fontFamily: "Archivo",
+                textAlign: "center",
+                opacity: 0.6,
+                lineHeight: 24,
               }}
             >
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: "500",
-                  color: "#303030",
-                  fontFamily: "Archivo",
-                  textAlign: "center",
-                  opacity: 0.6,
-                  lineHeight: 24,
-                }}
-              >
-                Forgot Your PIN Code?
-              </Text>
-            </TouchableOpacity>
-          </View>
+              Forgot Your PIN Code?
+            </Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </View>

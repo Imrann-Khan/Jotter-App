@@ -142,10 +142,11 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({
             <View style={{ marginBottom: 12 }}>
               <View style={{ gap: 16, marginBottom: 18 }}>
                 <TextInput
-                  label="User Name"
-                  placeholder="Great"
+                  placeholder="user name"
                   value={username}
                   onChangeText={setUsername}
+                  keyboardType="default"
+                  autoCapitalize="none"
                 />
                 <TextInput
                   placeholder="Email "

@@ -1,20 +1,10 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import Svg, { Path } from "react-native-svg";
 
 interface PinKeypadProps {
   onNumberPress: (number: string) => void;
   onDeletePress: () => void;
 }
-
-const DeleteIcon: React.FC = () => (
-  <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <Path
-      d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-      fill="#303030"
-    />
-  </Svg>
-);
 
 export const PinKeypad: React.FC<PinKeypadProps> = ({
   onNumberPress,
@@ -24,7 +14,7 @@ export const PinKeypad: React.FC<PinKeypadProps> = ({
     ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", "9"],
-    ["", "0", "delete"],
+    [",", "0", "delete"],
   ];
 
   const renderButton = (value: string, isDelete = false, isEmpty = false) => {
@@ -34,7 +24,6 @@ export const PinKeypad: React.FC<PinKeypadProps> = ({
           style={{
             width: 80,
             height: 80,
-            borderRadius: 40,
           }}
         />
       );
@@ -45,22 +34,25 @@ export const PinKeypad: React.FC<PinKeypadProps> = ({
         onPress={() => {
           if (isDelete) {
             onDeletePress();
-          } else {
+          } else if (value !== ",") {
             onNumberPress(value);
           }
         }}
         style={{
+          display: "flex",
           width: 80,
           height: 80,
-          borderRadius: 40,
+          padding: value === "," ? 28 : 19,
+          paddingVertical: 19,
           justifyContent: "center",
           alignItems: "center",
+          borderRadius: 40,
           backgroundColor: "transparent",
         }}
         activeOpacity={0.7}
       >
         {isDelete ? (
-          <DeleteIcon />
+          <View />
         ) : (
           <Text
             style={{
@@ -69,6 +61,7 @@ export const PinKeypad: React.FC<PinKeypadProps> = ({
               color: "#303030",
               fontFamily: "Inter",
               textAlign: "center",
+              lineHeight: 42,
             }}
           >
             {value}
@@ -81,27 +74,29 @@ export const PinKeypad: React.FC<PinKeypadProps> = ({
   return (
     <View
       style={{
+        display: "inline-flex",
         flexDirection: "column",
+        alignItems: "flex-start",
         gap: 24,
-        alignItems: "center",
       }}
     >
       {keypadRows.map((row, rowIndex) => (
         <View
           key={rowIndex}
           style={{
-            flexDirection: "row",
+            display: "flex",
+            alignItems: "flex-start",
             gap: 24,
-            alignItems: "center",
+            flexDirection: "row",
           }}
         >
           {row.map((value, colIndex) => {
             const key = `${rowIndex}-${colIndex}`;
-            if (value === "") {
-              return <View key={key}>{renderButton(value, false, true)}</View>;
-            }
             if (value === "delete") {
               return <View key={key}>{renderButton(value, true)}</View>;
+            }
+            if (value === ",") {
+              return <View key={key}>{renderButton(value, false, true)}</View>;
             }
             return <View key={key}>{renderButton(value)}</View>;
           })}
